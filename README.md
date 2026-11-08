@@ -53,3 +53,8 @@ for 1.21) has not been updated to 26.3.
 
 All credit for the original concept, design, and logic goes to
 wisecase2. This port exists to bring it to Minecraft 26.3. See `NOTICE`.
+
+> Port note: the original's remove-yield mixin targeted
+> `Minecraft.render`, which no longer exists in 26.3's render loop, so
+> that piece was dropped (like the main-worker-executor overwrite).
+> Thread priority configuration is preserved.
