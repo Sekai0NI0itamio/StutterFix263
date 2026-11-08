@@ -9,11 +9,11 @@ import java.lang.reflect.Modifier;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
-import net.fabricmc.loader.api.FabricLoader;
+import net.minecraftforge.fml.loading.FMLPaths;
 import net.minecraft.util.Mth;
 
 /**
- * Port of wisecase2's ThreadConfig (MIT), without the in-game GUI:
+ * Forge port of wisecase2's ThreadConfig (MIT), without the in-game GUI:
  * configuration is edited via stutterfix-config.json only.
  */
 public class ThreadConfig {
@@ -41,7 +41,7 @@ public class ThreadConfig {
     }
 
     public static ThreadConfig readConfig(String name) {
-        Path path = FabricLoader.getInstance().getConfigDir().resolve(name);
+        Path path = FMLPaths.CONFIGDIR.get().resolve(name);
         ThreadConfig config;
         if (Files.exists(path)) {
             try (FileReader reader = new FileReader(path.toFile())) {

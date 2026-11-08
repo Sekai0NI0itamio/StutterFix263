@@ -9,8 +9,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 /**
  * Port of wisecase2's MinecraftClientMixin: capture the render thread
- * once the client starts running. In 26.3 the method is run() on
- * net.minecraft.client.Minecraft (was MinecraftClient.run()V).
+ * once the client starts running. Forge 1.20.1 official mappings: run() on
+ * net.minecraft.client.Minecraft.
  */
 @Mixin(Minecraft.class)
 public class MinecraftClientMixin {

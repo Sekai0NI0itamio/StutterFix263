@@ -1,6 +1,5 @@
 {
   "required": true,
-  "minVersion": "0.8",
   "package": "itamio.stutterfix.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
@@ -11,5 +10,7 @@
   ],
   "injectors": {
     "defaultRequire": 1
-  }
+  },
+  "refmap": "stutterfix.refmap.json",
+  "minVersion": "0.8"
 }

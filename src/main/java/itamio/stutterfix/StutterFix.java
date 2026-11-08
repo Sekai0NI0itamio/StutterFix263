@@ -3,19 +3,18 @@ package itamio.stutterfix;
 import itamio.stutterfix.config.ThreadConfig;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ExecutorService;
-import net.fabricmc.api.ModInitializer;
+import net.minecraftforge.fml.common.Mod;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * Unofficial port of StutterFix by wisecase2 (MIT).
+ * Unofficial Forge port of StutterFix by wisecase2 (MIT).
  * See NOTICE for credit and licensing, and README for port status:
- * GUI removed (JSON config only), main-worker-executor overwrite
- * dropped because Util.getMainWorkerExecutor was removed in 26.3
- * (replaced by backgroundExecutor()).
+ * GUI removed (JSON config only).
  */
-public class StutterFix implements ModInitializer {
-    public static final Logger LOGGER = LoggerFactory.getLogger("stutterfix263");
+@Mod("stutterfix")
+public class StutterFix {
+    public static final Logger LOGGER = LoggerFactory.getLogger("stutterfix");
 
     public static boolean isClientInitialized = false;
     public static ThreadConfig threadconfig = new ThreadConfig();
@@ -30,6 +29,14 @@ public class StutterFix implements ModInitializer {
     public static Thread serverThread;
     public static boolean isInitializedRenderThread = false;
     public static boolean isInitializedServerThread = false;
+
+    public StutterFix() {
+        threadconfig = ThreadConfig.readConfig("stutterfix-config.json");
+        saveThread.execute(() -> threadconfig.saveConfig());
+        isConfigInitialized = true;
+        configPriorityRenderThread();
+        configPriorityServerThread();
+    }
 
     public static void loadRenderThread(Thread thread) {
         renderThread = thread;
@@ -51,14 +58,5 @@ public class StutterFix implements ModInitializer {
         if (isConfigInitialized && isInitializedServerThread) {
             serverThread.setPriority(threadconfig.serverThreadPriority);
         }
-    }
-
-    @Override
-    public void onInitialize() {
-        threadconfig = ThreadConfig.readConfig("stutterfix-config.json");
-        saveThread.execute(() -> threadconfig.saveConfig());
-        isConfigInitialized = true;
-        configPriorityRenderThread();
-        configPriorityServerThread();
     }
 }
