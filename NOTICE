@@ -1,0 +1,21 @@
+NOTICE
+
+StutterFix (Itamio port for Minecraft 26.3)
+
+This mod is an unofficial port of "StutterFix" by wisecase2
+(https://github.com/wisecase2/StutterFix, MIT, 1.3M downloads on
+Modrinth, max Minecraft 1.21).
+
+All credit for the original concept, design, and logic goes to
+wisecase2. This port was created by Itamio to bring the mod to
+Minecraft 26.3 (Fabric) because the original has not been updated
+to this version.
+
+Itamio does not take credit for any of the original assets or logic.
+The code was updated to be compatible with Minecraft 26.3 (Fabric).
+Port changes: the in-game options GUI was removed (configuration is
+JSON-only, per this repo's no-GUI policy for simple ports), and the
+main-worker-executor overwrite was dropped because
+Util.getMainWorkerExecutor() was removed in 26.3 (replaced by
+backgroundExecutor()). Render/server thread priority and remove-yield
+behaviour are preserved.

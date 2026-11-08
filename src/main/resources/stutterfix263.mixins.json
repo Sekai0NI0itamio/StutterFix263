@@ -1,0 +1,9 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "itamio.stutterfix.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": ["server.MinecraftServerMixin"],
+  "client": ["client.MinecraftClientMixin", "client.RemoveYieldMixin"],
+  "injectors": {"defaultRequire": 1}
+}
