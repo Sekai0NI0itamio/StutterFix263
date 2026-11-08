@@ -20,7 +20,11 @@ public class StutterFix implements ModInitializer {
     public static boolean isClientInitialized = false;
     public static ThreadConfig threadconfig = new ThreadConfig();
     public static boolean isConfigInitialized = false;
-    public static ExecutorService saveThread = Executors.newSingleThreadExecutor();
+    public static ExecutorService saveThread = Executors.newSingleThreadExecutor(r -> {
+        Thread thread = new Thread(r, "stutterfix-config-save");
+        thread.setDaemon(true);
+        return thread;
+    });
 
     public static Thread renderThread;
     public static Thread serverThread;
