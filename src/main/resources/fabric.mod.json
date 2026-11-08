@@ -4,7 +4,10 @@
   "version": "${version}",
   "name": "StutterFix",
   "description": "Configures main threads to reduce stuttering. Unofficial port of StutterFix by wisecase2 (MIT) for Minecraft 26.3 (Fabric). See NOTICE for credit.",
-  "authors": ["Itamio", "wisecase2"],
+  "authors": [
+    "Itamio",
+    "wisecase2"
+  ],
   "contact": {
     "homepage": "https://github.com/Sekai0NI0itamio/StutterFix263",
     "sources": "https://github.com/wisecase2/StutterFix",
@@ -12,7 +15,18 @@
   },
   "license": "MIT",
   "environment": "*",
-  "entrypoints": {"main": ["itamio.stutterfix.StutterFix"]},
-  "mixins": ["stutterfix263.mixins.json"],
-  "depends": {"fabricloader": ">=0.20.1", "minecraft": "~26.3", "java": ">=25", "fabric-api": "*"}
+  "entrypoints": {
+    "main": [
+      "itamio.stutterfix.StutterFix"
+    ]
+  },
+  "mixins": [
+    "stutterfix263.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.16.14",
+    "minecraft": ">=1.21.1 <1.22",
+    "java": ">=21",
+    "fabric-api": "*"
+  }
 }
